@@ -6,7 +6,7 @@
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 17:22:30 by tojimene          #+#    #+#             */
-/*   Updated: 2022/03/31 22:27:28 by tojimene         ###   ########.fr       */
+/*   Updated: 2022/04/05 13:47:08 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,22 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	len;
 	size_t	i;
-	size_t	j;
-	size_t	n;
 
-	i = ft_strlen(src);
-	j = ft_strlen(dst);
-	n = 0;
-	if (j > dstsize)
+	len = 0;
+	i = 0;
+	while (dst[i] && i < dstsize)
+		i++;
+	len = i;
+	while (src[i - len] && i + 1 < dstsize)
 	{
-		return (i + dstsize);
+		dst[i] = src[i - len];
+		i++;
 	}
-	else
-	{
-		while (n < (dstsize - j) - 1)
-		{
-			dst[j + n] = src[n];
-			n++;
-		}
-		dst[j + i] = '\0';
-	}
-	return (i + j);
+	if (len < dstsize)
+		dst[i] = '\0';
+	return (len + ft_strlen(src));
 }
 /*int main(void)
 {

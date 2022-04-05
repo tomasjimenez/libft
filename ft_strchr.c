@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tojimene <tojimene@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:07:52 by tojimene          #+#    #+#             */
-/*   Updated: 2022/03/30 18:28:57 by tojimene         ###   ########.fr       */
+/*   Updated: 2022/04/05 13:43:24 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] == c)
-			return ((char *) s + i);
-		i++;
+		if (*s == (char)c)
+			return ((char *) s);
+		s++;
 	}
-	if (s[i] == c)
-		return ((char *) s + i);
+	if ((char)c == '\0')
+		return ((char *) s);
 	return (0);
 }
 /*int main(void)

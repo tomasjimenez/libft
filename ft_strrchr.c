@@ -3,36 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tojimene <tojimene@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 17:57:04 by tojimene          #+#    #+#             */
-/*   Updated: 2022/03/30 18:20:40 by tojimene         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:50:16 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int	a;
 
-	i = 0;
-	while (s[i] != '\0')
+	a = ft_strlen(s);
+	while (a >= 0)
 	{
-		i++;
+		if (s[a] == (char)c)
+			return ((char *)&s[a]);
+		a--;
 	}
-	while (i >= 0)
-	{
-		if (s[i] == c)
-			return ((char *) s + i);
-		i--;
-	}	
 	return (0);
 }
 /*int main(void)
 {
-	char  s[] = "abbbbbbbb";
+	char  s[] = "abb";
 	printf("%s", ft_strrchr(s, 'a'));
 	printf("%s", strrchr(s, 'a'));
 }*/
