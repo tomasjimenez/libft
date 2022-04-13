@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 22:39:56 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/13 16:36:31 by tojimene         ###   ########.fr       */
+/*   Created: 2022/04/13 15:05:37 by tojimene          #+#    #+#             */
+/*   Updated: 2022/04/13 15:39:44 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include<stdlib.h>
+#include<stdio.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*i;
+	int	i;
 
-	if (count == SIZE_MAX && size == SIZE_MAX)
-		return (NULL);
-	i = (char *)malloc(size * count);
-	if (!i)
-		return (0);
-	ft_bzero (i, count * size);
-	return (i);
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
-/*int main(void)
-{
-	char *s;
-	s = ft_calloc(8, sizeof(int));
-	return(0);
-}*/
+// char suma (unsigned int a , char b )
+// {
+//     return a + b ;
+// }
+
+// int main(void)
+// {
+// 	char s[] = "1234";
+// 	printf("%d", ft_striteri(s, &suma));
+// 	return(0);
+// }

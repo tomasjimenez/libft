@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 22:39:56 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/13 16:36:31 by tojimene         ###   ########.fr       */
+/*   Created: 2022/04/13 16:15:24 by tojimene          #+#    #+#             */
+/*   Updated: 2022/04/13 16:18:43 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include "libft.h"
+#include <string.h>
+#include <fcntl.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*i;
+	int	i;
 
-	if (count == SIZE_MAX && size == SIZE_MAX)
-		return (NULL);
-	i = (char *)malloc(size * count);
-	if (!i)
-		return (0);
-	ft_bzero (i, count * size);
-	return (i);
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }
-/*int main(void)
-{
-	char *s;
-	s = ft_calloc(8, sizeof(int));
-	return(0);
-}*/
+// int main()
+// {
+//     const char* filename = "prueba.txt";
+//     int fd = open(filename, O_WRONLY);
+//     char c[] = "hola";
+//     ft_putendl_fd(c, fd);
+//     return(0);
+// }
