@@ -6,7 +6,7 @@
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 17:11:38 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/13 13:59:21 by tojimene         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:54:32 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,20 @@ char    **ft_split(char const *s, char c)
         *ptr++;
     }
     return(ptr);
-}
-int main(void)
-{
-    char s[] = "hola pepe luis jose";
-    char c = ' ';
-    size_t i;
-    char    **strsplit = ft_split(s, c);
-
-    i = 0;
-    while (i < ft_numstring(s, c))
-    {
-        printf("%s\n", strsplit[i]);
-        i++; 
-    }        
 }*/
+// int main(void)
+// {
+//     char s[] = "hola pepe luis jose";
+//     char c = ' ';
+//     size_t i;
+//     char    **strsplit = ft_split(s, c);
+
+//     i = 0;
+//     while (i < ft_numstring(s, c))
+//     {
+//         printf("%s\n", strsplit[i]);
+//         i++; 
+//     }        
+// 	system("leaks a.out");
+// 	return(0);
+// }

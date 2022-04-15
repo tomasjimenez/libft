@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 16:04:15 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/15 12:41:40 by tojimene         ###   ########.fr       */
+/*   Created: 2022/04/14 19:56:35 by tojimene          #+#    #+#             */
+/*   Updated: 2022/04/14 21:05:52 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
+#include<stdlib.h>
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*item;
 
-	i = 0;
-	if (!s || !fd)
+	if (!lst || !del)
 		return ;
-	while (s[i])
+	while (*lst)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		item = (*lst)->next;
+		ft_lstdelone (*lst, del);
+		*lst = item;
 	}
+	lst = NULL;
 }
-// int main()
-// {
-//     const char* filename = "prueba.txt";
-//     int fd = open(filename, O_WRONLY);
-//     char c[] = "hola";
-//     ft_putstr_fd(c, fd);
-//     return(0);
-// }

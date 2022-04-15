@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 16:04:15 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/15 12:41:40 by tojimene         ###   ########.fr       */
+/*   Created: 2022/04/14 18:57:58 by tojimene          #+#    #+#             */
+/*   Updated: 2022/04/14 20:54:51 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include <stdio.h>
+#include "libft.h"
 #include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	t_list	*tmp;
 
-	i = 0;
-	if (!s || !fd)
+	if (lst == NULL || new == NULL)
 		return ;
-	while (s[i])
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		write (fd, &s[i], 1);
-		i++;
+		tmp = ft_lstlast(*lst);
+		if (tmp)
+		{
+		tmp->next = new;
+		}
 	}
 }
-// int main()
-// {
-//     const char* filename = "prueba.txt";
-//     int fd = open(filename, O_WRONLY);
-//     char c[] = "hola";
-//     ft_putstr_fd(c, fd);
-//     return(0);
-// }

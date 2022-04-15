@@ -6,7 +6,7 @@
 /*   By: tojimene <tojimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:15:24 by tojimene          #+#    #+#             */
-/*   Updated: 2022/04/13 16:18:43 by tojimene         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:42:19 by tojimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (!s || !fd)
+		return ;
 	while (s[i])
 	{
 		write (fd, &s[i], 1);
